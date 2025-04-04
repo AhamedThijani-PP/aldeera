@@ -1,0 +1,46 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
+{% block body %}
+<div class="container-xxl py-5 bg-dark hero-header mb-5">
+    <div class="container text-center my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Food Menu</h1>
+    </div>
+</div>
+</div>
+<!-- Navbar & Hero End -->
+
+
+<!-- Menu Start -->
+<div class="container-xxl py-5">
+<div class="container">
+    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+        <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>
+        <h1 class="mb-5">Most Popular Items in {{menu_view.0.category.name}}</h1>
+    </div>
+    <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
+        <div class="tab-content">
+            <div id="tab-1" class="tab-pane fade show p-0 active">
+                <div class="row g-4">
+                    {% for item in menu_view %}
+                    <div class="col-lg-6 col-12">
+                        <div class="d-flex align-items-center">
+                            <a href="https://wa.me/96893909320?text=I%20am%20interested%20in%20ordering%20{{ item.name|urlencode }}" target="_blank">
+                                <img class="flex-shrink-0 img-fluid rounded" src="{{item.product_image.url}}" alt="" style="width: 100px; height: 100px; object-fit: cover;">
+                            </a>                            
+                            <div class="w-100 d-flex flex-column text-start ps-4">
+                                <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                    <span>{{item.name}}</span>
+                                    <span class="text-primary">{{item.price}} &#65020;</span>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Menu End -->
+{% endblock body %}
